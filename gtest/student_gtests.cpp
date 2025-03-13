@@ -9,8 +9,8 @@ TEST(DijkstraTest, basic_dk) {
   G.resize(4);
   G[0] = {{0, 1, 1}, {0, 2, 4}};
   G[1] = {{1, 2, 2}, {1, 3, 6}};
-  G[0] = {{2, 3, 3}};
-  G[0] = {};
+  G[2] = {{2, 3, 3}};
+  G[3] = {};
 
   vector<int> prev;
   vector<int> dist = dijkstra_shortest_path(G, 0, prev);
@@ -31,8 +31,8 @@ TEST(DijkstraTest, disconnected_dk) {
   G.resize(4);
   G[0] = {{0, 1, 1}};
   G[1] = {};
-  G[0] = {{2, 3, 2}};
-  G[0] = {};
+  G[2] = {{2, 3, 2}};
+  G[3] = {};
 
   vector<int> prev;
   vector<int> dist = dijkstra_shortest_path(G, 0, prev);
@@ -56,7 +56,7 @@ TEST(DijkstraTest, single_dk) {
 
   EXPECT_EQ(dist[0], 0);
 
-  vector<int> path = extract_shortest_path(prev, 3);
+  vector<int> path = extract_shortest_path(prev, 0);
   vector<int> expected_path = {0};
   EXPECT_EQ(path, expected_path);
 }
